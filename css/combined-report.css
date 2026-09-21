@@ -1,0 +1,142 @@
+body.report-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 70% 40% at 10% 0%, rgba(59, 130, 246, 0.08), transparent),
+    radial-gradient(ellipse 50% 30% at 90% 20%, rgba(155, 89, 182, 0.06), transparent),
+    var(--bg-light);
+  overflow-x: hidden;
+}
+
+.report-page-header {
+  width: 100%;
+  background: linear-gradient(135deg, #00c2ff 0%, #0072ff 50%, #9b59b6 100%);
+  padding: 32px clamp(20px, 4vw, 48px) 28px;
+  color: #ffffff;
+  background-image:
+    linear-gradient(135deg, rgba(0,194,255,0.84) 0%, rgba(0,114,255,0.88) 50%, rgba(155,89,182,0.90) 100%),
+    url("../assets/hero-image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.report-page-header__inner { max-width: 1400px; margin: 0 auto; }
+.report-page-header .badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.18); padding: 4px 12px; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 600; margin-bottom: 10px;
+}
+.report-page-header h1 {
+  font-family: var(--font-heading); font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 700; margin: 0 0 8px; letter-spacing: -0.03em;
+}
+.report-page-header p {
+  margin: 0; font-size: 1rem; color: rgba(255,255,255,0.92); max-width: 42em; line-height: 1.5;
+}
+
+/* ── Content container ── */
+#reportPageApp {
+  flex: 1 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 4vw, 48px) 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+.card h3, .card h4 { margin-top: 0; color: var(--text-dark); font-family: var(--font-heading); }
+.section-desc { color: var(--text-muted); line-height: 1.6; }
+.footer-note { text-align: center; margin-top: 1rem; color: #9ca3af; font-size: 0.85rem; }
+
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #00c2ff 0%, #0072ff 100%);
+  color: #fff; padding: 0.7rem 1.4rem; border-radius: 50px;
+  text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  box-shadow: 0 4px 14px rgba(0, 114, 255, 0.25);
+  transition: all 0.2s ease;
+}
+.hero-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,114,255,0.35); }
+
+/* ── CTA card ── */
+.cta-card {
+  background: linear-gradient(135deg, #00c2ff 0%, #0072ff 60%, #9b59b6 100%);
+  color: #fff; border-radius: 20px; padding: 1.75rem 2rem;
+  box-shadow: 0 12px 32px rgba(0, 114, 255, 0.2);
+}
+.cta-card h3 { color: #fff; margin-top: 0; }
+.cta-card p { color: #f1f5f9; line-height: 1.6; }
+.cta-buttons { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1rem; }
+.cta-btn {
+  background: #fff; color: #0072ff; padding: 0.65rem 1.2rem; border-radius: 50px;
+  text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s ease;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+.cta-btn.secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.6); box-shadow: none; }
+.cta-btn.secondary:hover { background: rgba(255,255,255,0.25); border-color: #fff; }
+
+/* ── Report hero — personality-color driven, same system as Career Discovery ── */
+.report-hero {
+  background: linear-gradient(135deg, var(--hero-from, #6d28d9), var(--hero-to, #06b6d4));
+  position: relative; overflow: hidden;
+  color: #fff; border-radius: 20px; padding: 2.25rem 2rem; text-align: center;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.28);
+}
+.report-hero::before {
+  content: ""; position: absolute; top: -40%; right: -10%; width: 60%; height: 180%;
+  background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 65%);
+  pointer-events: none;
+}
+.report-hero h2, .report-hero p { position: relative; z-index: 1; font-family: var(--font-heading); }
+.report-hero p { color: #f1f5f9; margin-top: 0.5rem; }
+.stars { font-size: 1.6rem; color: #ffd54a; margin-top: 0.75rem; letter-spacing: 2px; position: relative; z-index: 1; }
+.stars .empty { color: rgba(255,255,255,0.35); }
+.match-caveat { font-size: 0.78rem; color: #f1f5f9; opacity: 0.85; margin-top: 0.3rem; position: relative; z-index: 1; }
+
+/* ── Report grid + domain-tinted cards ── */
+.report-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+@media (min-width: 900px) { .report-grid { grid-template-columns: 1fr 1fr; } }
+
+.report-card { border-top-width: 5px; border-top-style: solid; }
+.report-card--reasoning { background: linear-gradient(180deg, rgba(29,78,216,0.05), #fff 60%); border-top-color: #1d4ed8; }
+.report-card--learning  { background: linear-gradient(180deg, rgba(245,158,11,0.06), #fff 60%); border-top-color: #f59e0b; }
+.report-card--subjects  { background: linear-gradient(180deg, rgba(13,148,136,0.06), #fff 60%); border-top-color: #0d9488; }
+.report-card--growth    { background: linear-gradient(180deg, rgba(217,119,6,0.06), #fff 60%); border-top-color: #d97706; }
+.report-card--reasoning h4 { color: #1d4ed8; }
+.report-card--learning h4  { color: #b45309; }
+.report-card--subjects h4  { color: #0f766e; }
+.report-card--growth h4    { color: #b45309; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+.tag { background: #f0f7ff; color: #0072ff; padding: 0.4rem 0.85rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500; border: 1px solid rgba(0,114,255,0.15); }
+.tag.career { background: #0072ff; color: #fff; border: none; }
+
+/* ── Careers banner (matches career-discovery) ── */
+.report-careers-banner {
+  background: linear-gradient(120deg, #0f172a 0%, #1e3a8a 55%, #6d28d9 100%);
+  border-radius: 18px; padding: 1.75rem 2rem; color: #fff; margin-top: 1.25rem;
+}
+.report-careers-banner h4 { color: #fff; }
+.report-careers-banner .tag.career { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
+.report-careers-banner .tag.career:hover { background: #fff; color: #1e3a8a; }
+.report-careers-banner .missing-card { border-color: rgba(255,255,255,0.3); }
+.report-careers-banner .missing-card .section-desc { color: #e2e8f0; }
+
+/* ── Reasoning score bars ── */
+.bar-row { display: grid; grid-template-columns: 110px 1fr 45px; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.88rem; }
+.bar-track { background: #eef3f6; border-radius: 6px; height: 12px; overflow: hidden; }
+.bar-fill { background: linear-gradient(90deg, #1d4ed8, #06b6d4); height: 100%; border-radius: 6px; }
+
+/* ── Empty / missing states ── */
+.empty-state { text-align: center; padding: 2.5rem 1.5rem; }
+.empty-state .icon { font-size: 2.6rem; }
+.missing-card { border: 1.5px dashed #cfe0ea; border-radius: 12px; padding: 1.25rem; text-align: center; margin-top: 0.9rem; }

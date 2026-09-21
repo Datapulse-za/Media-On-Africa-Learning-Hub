@@ -1,6 +1,5 @@
 # E-Learning Hub
 
-**Maintainer / Repo Admin:** Lutendo Matshidze
 **Production Site:** https://media-on-africa-learning-hub.github.io/Media-On-Africa-Learning-Hub/
 
 ## What this project is

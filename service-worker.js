@@ -43,6 +43,7 @@ const STATIC_ASSETS = [
   "css/khulisa.css",
   "css/forum.css",
   "css/wellness.css",
+  "css/combined-report.css",
 
   // External EmailJS SDK CDN
   'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js',
@@ -67,6 +68,10 @@ const STATIC_ASSETS = [
   // Career Discovery — data/render scripts
   "js/careers/career-data.js",
   "js/careers/career-render.js",
+
+  // Combined Report — data/render scripts
+  "js/combined-report/combined-report-data.js",
+  "js/combined-report/combined-report-render.js",
 
   // Blog page — data/render/behaviour scripts
   "js/blogs/blog-data.js",

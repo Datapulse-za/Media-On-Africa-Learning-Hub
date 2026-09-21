@@ -9,7 +9,10 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#0072ff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="apple-mobile-web-app-title" content="MoA Learning" />
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
 
@@ -49,17 +52,22 @@
     <!-- Navigation Bar -->
     <nav class="navbar" id="mainNav">
       <a href="index.html" class="nav-logo">
-        <i class="fa fa-graduation-cap logo-icon"></i> MOA Hub
+        <i class="fa fa-graduation-cap logo-icon"></i> E-Learning Hub
       </a>
       <div class="nav-links" id="navLinks">
-        <button type="button" class="close-btn" onclick="hidemenu()" aria-label="Close menu">
+        <button
+          type="button"
+          class="close-btn"
+          onclick="hidemenu()"
+          aria-label="Close menu"
+        >
           <i class="fa fa-times" aria-hidden="true"></i>
         </button>
         <ul>
           <li><a href="index.html">HOME</a></li>
           <li><a href="Subjects.html">SUBJECTS</a></li>
           <li><a href="quizzes.html">QUIZZES</a></li>
-          <li><a href="aptitude.html">REASONING SKILLS</a></li>
+          <li><a href="aptitude.html" class="active">REASONING SKILLS</a></li>
           <li><a href="forum.html">DISCUSSION</a></li>
           <li><a href="mental_wellness.html">WELLNESS</a></li>
           <li><a href="blog.html">BLOG</a></li>
@@ -79,16 +87,18 @@
       </button>
     </nav>
 
-    <!-- Header -->
-    <section class="career-page-header" aria-label="Career Discovery Assessment">
+    <header class="career-page-header">
       <div class="career-page-header__inner">
+        <span class="badge"
+          ><i class="fa fa-lightbulb-o"></i> Practice &amp; Prep</span
+        >
         <h1>Career Discovery Assessment</h1>
-        <p class="subtitle">
+        <p>
           Understand your interests, personality, strengths and learning style
-          — and see which careers and subjects fit you.
+          and see which careers and subjects fit you.
         </p>
       </div>
-    </section>
+    </header>
 
     <main id="careerApp" aria-live="polite">
       <section class="career-intro">
@@ -97,8 +107,10 @@
           <p class="section-desc">
             Unlike the Reasoning Skills Assessment, there are no right or wrong
             answers here. This assessment looks at
-            <strong>what you enjoy, how you work, and what matters to you</strong>
-            — then generates a personalised report with career and subject
+            <strong
+              >what you enjoy, how you work, and what matters to you</strong
+            >
+            then generates a personalised report with career and subject
             suggestions. It takes about 10-15 minutes and works offline.
           </p>
           <p class="explain">
@@ -113,12 +125,34 @@
         <div class="card card--interests" id="interests-card">
           <h3>
             1. Interests &amp; Personality
-            <span id="interests-progress-badge" class="progress-saved-badge" style="display:none">✓ Saved</span>
+            <span
+              id="interests-progress-badge"
+              class="progress-saved-badge"
+              style="display: none"
+              >✓ Saved</span
+            >
           </h3>
-          <p class="section-desc">Rate how much you agree with each statement.</p>
-          <button class="toggle-btn" type="button" data-target="interests-questions">Show Questions</button>
+          <p class="section-desc">
+            Rate how much you agree with each statement.
+          </p>
+          <button
+            class="toggle-btn"
+            type="button"
+            data-target="interests-questions"
+          >
+            Show Questions
+          </button>
+          <button
+            class="toggle-btn reset-btn"
+            type="button"
+            data-reset="career-interests"
+          >
+            Reset
+          </button>
           <div class="questions" id="interests-questions">
-            <div class="likert-legend"><span>1 = Strongly Disagree</span><span>5 = Strongly Agree</span></div>
+            <div class="likert-legend">
+              <span>1 = Strongly Disagree</span><span>5 = Strongly Agree</span>
+            </div>
             <form id="career-interests"></form>
           </div>
         </div>
@@ -127,13 +161,37 @@
         <div class="card card--strengths" id="strengths-card">
           <h3>
             2. Strengths
-            <span id="strengths-progress-badge" class="progress-saved-badge" style="display:none">✓ Saved</span>
+            <span
+              id="strengths-progress-badge"
+              class="progress-saved-badge"
+              style="display: none"
+              >✓ Saved</span
+            >
           </h3>
-          <p class="section-desc">Choose up to 5 that people often say describe you.</p>
-          <button class="toggle-btn" type="button" data-target="strengths-questions">Show Questions</button>
+          <p class="section-desc">
+            Choose up to 5 that people often say describe you.
+          </p>
+          <button
+            class="toggle-btn"
+            type="button"
+            data-target="strengths-questions"
+          >
+            Show Questions
+          </button>
+          <button
+            class="toggle-btn reset-btn"
+            type="button"
+            data-reset="career-strengths"
+          >
+            Reset
+          </button>
           <div class="questions" id="strengths-questions">
-            <form id="career-strengths"><div class="chip-grid" id="strengths-chip-grid"></div></form>
-            <div class="chip-counter" id="strengths-counter">Selected: 0 / 5</div>
+            <form id="career-strengths">
+              <div class="chip-grid" id="strengths-chip-grid"></div>
+            </form>
+            <div class="chip-counter" id="strengths-counter">
+              Selected: 0 / 5
+            </div>
           </div>
         </div>
 
@@ -141,10 +199,30 @@
         <div class="card card--learning" id="learning-card">
           <h3>
             3. Learning Style
-            <span id="learning-progress-badge" class="progress-saved-badge" style="display:none">✓ Saved</span>
+            <span
+              id="learning-progress-badge"
+              class="progress-saved-badge"
+              style="display: none"
+              >✓ Saved</span
+            >
           </h3>
-          <p class="section-desc">Choose the option that fits you best for each question.</p>
-          <button class="toggle-btn" type="button" data-target="learning-questions">Show Questions</button>
+          <p class="section-desc">
+            Choose the option that fits you best for each question.
+          </p>
+          <button
+            class="toggle-btn"
+            type="button"
+            data-target="learning-questions"
+          >
+            Show Questions
+          </button>
+          <button
+            class="toggle-btn reset-btn"
+            type="button"
+            data-reset="career-learning"
+          >
+            Reset
+          </button>
           <div class="questions" id="learning-questions">
             <form id="career-learning"></form>
           </div>
@@ -154,10 +232,30 @@
         <div class="card card--workprefs" id="workprefs-card">
           <h3>
             4. Work Preferences
-            <span id="workprefs-progress-badge" class="progress-saved-badge" style="display:none">✓ Saved</span>
+            <span
+              id="workprefs-progress-badge"
+              class="progress-saved-badge"
+              style="display: none"
+              >✓ Saved</span
+            >
           </h3>
-          <p class="section-desc">Pick the option you'd naturally lean towards.</p>
-          <button class="toggle-btn" type="button" data-target="workprefs-questions">Show Questions</button>
+          <p class="section-desc">
+            Pick the option you'd naturally lean towards.
+          </p>
+          <button
+            class="toggle-btn"
+            type="button"
+            data-target="workprefs-questions"
+          >
+            Show Questions
+          </button>
+          <button
+            class="toggle-btn reset-btn"
+            type="button"
+            data-reset="career-workprefs"
+          >
+            Reset
+          </button>
           <div class="questions" id="workprefs-questions">
             <form id="career-workprefs"></form>
           </div>
@@ -167,21 +265,43 @@
         <div class="card card--values" id="values-card">
           <h3>
             5. Values
-            <span id="values-progress-badge" class="progress-saved-badge" style="display:none">✓ Saved</span>
+            <span
+              id="values-progress-badge"
+              class="progress-saved-badge"
+              style="display: none"
+              >✓ Saved</span
+            >
           </h3>
-          <p class="section-desc">Choose up to 3 that matter most to you in a future career.</p>
-          <button class="toggle-btn" type="button" data-target="values-questions">Show Questions</button>
+          <p class="section-desc">
+            Choose up to 3 that matter most to you in a future career.
+          </p>
+          <button
+            class="toggle-btn"
+            type="button"
+            data-target="values-questions"
+          >
+            Show Questions
+          </button>
+          <button
+            class="toggle-btn reset-btn"
+            type="button"
+            data-reset="career-values"
+          >
+            Reset
+          </button>
           <div class="questions" id="values-questions">
-            <form id="career-values"><div class="chip-grid" id="values-chip-grid"></div></form>
+            <form id="career-values">
+              <div class="chip-grid" id="values-chip-grid"></div>
+            </form>
             <div class="chip-counter" id="values-counter">Selected: 0 / 3</div>
           </div>
         </div>
       </section>
 
-      <!-- Clean Action Section (No redundant dramatic wrapper box) -->
+      <!-- Clean Action Section -->
       <div class="generate-action-wrap">
         <button class="generate-btn" type="button" id="generateReportBtn">
-           Generate My Report
+          Generate My Report
         </button>
         <div id="generateMissingNote"></div>
       </div>
@@ -189,54 +309,79 @@
       <!-- Report -->
       <section id="reportSection">
         <div class="report-hero">
+          <button
+            class="hide-report-btn"
+            type="button"
+            id="toggleReportBtn"
+            aria-expanded="true"
+            aria-controls="reportBody"
+          >
+            <span class="hide-report-icon">▲</span> Hide Report
+          </button>
           <h2 id="reportPersonalityTitle">Your Career Discovery Report</h2>
           <p id="reportPersonalityBlurb"></p>
         </div>
 
-        <div class="report-grid">
-          <div class="card report-card">
-            <h4>Your Interest Profile</h4>
-            <div class="radar-wrap" id="radarChart"></div>
+        <div id="reportBody">
+          <div class="report-grid">
+            <div class="card report-card report-card--interests">
+              <h4>Your Interest Profile</h4>
+              <div class="radar-wrap" id="radarChart"></div>
+            </div>
+            <div class="card report-card report-card--strengths">
+              <h4>Your Strengths</h4>
+              <div class="tag-list" id="reportStrengths"></div>
+              <h4 style="margin-top: 1rem; color: #b45309">Areas to Develop</h4>
+              <div class="tag-list" id="reportGrowth"></div>
+            </div>
+            <div class="card report-card report-card--learning">
+              <h4>Learning Style</h4>
+              <p id="reportLearningStyle" class="section-desc"></p>
+            </div>
+            <div class="card report-card report-card--workprefs">
+              <h4>Work Preferences</h4>
+              <ul id="reportWorkPrefs" class="section-desc"></ul>
+            </div>
+            <div class="card report-card report-card--values">
+              <h4>What Matters to You</h4>
+              <div id="reportValues" class="section-desc"></div>
+            </div>
+            <div class="card report-card report-card--subjects">
+              <h4>Subjects You May Enjoy</h4>
+              <div class="tag-list" id="reportSubjects"></div>
+            </div>
           </div>
-          <div class="card report-card">
-            <h4>Your Strengths</h4>
-            <div class="tag-list" id="reportStrengths"></div>
-            <h4 style="margin-top: 1rem">Areas to Develop</h4>
-            <div class="tag-list" id="reportGrowth"></div>
-          </div>
-          <div class="card report-card">
-            <h4>Learning Style</h4>
-            <p id="reportLearningStyle" class="section-desc"></p>
-          </div>
-          <div class="card report-card">
-            <h4>Work Preferences</h4>
-            <ul id="reportWorkPrefs" class="section-desc"></ul>
-          </div>
-          <div class="card report-card">
-            <h4>What Matters to You</h4>
-            <div id="reportValues" class="section-desc"></div>
-          </div>
-          <div class="card report-card">
-            <h4>Subjects You May Enjoy</h4>
-            <div class="tag-list" id="reportSubjects"></div>
-          </div>
-        </div>
 
-        <div class="card report-card" style="margin-top: 1rem">
-          <h4>Careers That May Suit You</h4>
-          <div class="tag-list" id="reportCareers"></div>
-        </div>
+          <div class="card report-careers-banner">
+            <h4>Careers That May Suit You</h4>
+            <div class="tag-list" id="reportCareers"></div>
+          </div>
 
-        <div class="cta-card" style="margin-top: 1.5rem">
-          <h3>🧩 See the full picture</h3>
-          <p>
-            Combine this with your Reasoning Skills Assessment results for one
-            complete report covering your personality, interests and cognitive
-            strengths.
-          </p>
-          <div class="cta-buttons">
-            <a href="aptitude.html" class="cta-btn secondary">Take the Reasoning Skills Assessment →</a>
-            <a href="combined-report.html" class="cta-btn">View My Combined Report</a>
+          <div class="cta-card" style="margin-top: 1.5rem">
+            <h3>See the full picture</h3>
+            <p>
+              Combine this with your Reasoning Skills Assessment results for one
+              complete report covering your personality, interests and cognitive
+              strengths.
+            </p>
+            <div class="cta-buttons">
+              <a href="aptitude.html" class="cta-btn secondary"
+                >Take the Reasoning Skills Assessment →</a
+              >
+              <a href="combined-report.html" class="cta-btn"
+                >View My Combined Report</a
+              >
+            </div>
+          </div>
+
+          <div class="card" style="margin-top: 1rem; text-align: center">
+            <p class="section-desc" style="margin-bottom: 0.75rem">
+              Circumstances change - feel free to retake this assessment
+              anytime.
+            </p>
+            <button class="retake-btn" type="button" id="retakeAssessmentBtn">
+              Retake This Assessment
+            </button>
           </div>
         </div>
       </section>
@@ -249,31 +394,34 @@
     </div>
 
     <!-- Footer -->
-    <footer class="career-footer">
-      <div class="career-footer__inner">
-        <div class="career-footer__brand">
-          <span class="career-footer__logo">Media On Africa Learning Hub</span>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3><i class="fa fa-graduation-cap"></i> E-Learning Hub</h3>
           <p>
-            By leveraging technology, we aim to empower students with the tools
-            and support they need to succeed academically regardless of their
-            location, resources, or socioeconomic status.
-          </p>
-          <p class="footer-note" style="text-align: left; margin-top: 0.75rem">
-            This assessment is a self-discovery guide, not a professional
-            psychometric evaluation.
+            Empowering high school learners across South Africa with zero-data,
+            accessible, and high-quality e-learning tools.
           </p>
         </div>
 
-        <div class="career-footer__social" aria-label="Social media">
-          <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        <div class="footer-socials">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fa fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          </div>
         </div>
       </div>
-      <p class="career-footer__credit">
-        Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Media On Africa
-      </p>
+      <div class="footer-bottom">
+        <p>
+          Made with <i class="fa fa-heart text-danger"></i> for South African
+          learners by DataPulse
+        </p>
+      </div>
     </footer>
 
     <script>

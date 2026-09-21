@@ -81,7 +81,3 @@ Important things to know:
 - [ ] Decide whether generated quiz questions need an approval step before going live to learners.
 
 If you pick up one of these, please update this list so the rest of the team knows what's already being worked on.
-
-## 7. Getting help
-
-Repo admin: Lutendo Matshidze (Lumina) — lupreshie@gmail.com

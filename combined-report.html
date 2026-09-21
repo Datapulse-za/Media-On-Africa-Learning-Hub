@@ -1,279 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Combined Report - Media On Africa Learning Hub</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Combined Report - Media On Africa Learning Hub</title>
 
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#1a472a">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="MoA Learning">
-  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0072ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MoA Learning" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/combined-report.css" />
+    <link rel="stylesheet" href="css/side-decor.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body class="report-page">
+    <div class="quiz-decor" data-bounce-target="#reportPageApp" aria-hidden="true">
+      <div class="bubble bubble--1"></div>
+      <div class="bubble bubble--2"></div>
+      <div class="bubble bubble--3"></div>
+      <div class="bubble bubble--4"></div>
+      <div class="bubble bubble--5"></div>
+      <div class="bubble bubble--6"></div>
+      <i class="fa fa-line-chart float-icon float-icon--1"></i>
+      <i class="fa fa-trophy float-icon float-icon--2"></i>
+      <i class="fa fa-compass float-icon float-icon--3"></i>
+      <i class="fa fa-star float-icon float-icon--4"></i>
+      <i class="fa fa-graduation-cap float-icon float-icon--5"></i>
+      <i class="fa fa-check-circle float-icon float-icon--6"></i>
+    </div>
 
-  <style>
-    .header.big-header { padding: 4rem 1rem; background: linear-gradient(180deg,#0f4c81 0%, #0b6aa3 100%); color:#fff; text-align:center; }
-    .text-box h1 { margin:0; font-size:2.2rem; font-weight:700; font-family:Poppins, sans-serif; }
-    .text-box .subtitle { margin-top:0.5rem; font-size:1rem; opacity:0.9; font-family:Poppins, sans-serif; }
-    .aptitude-intro { max-width:1000px; margin:1.5rem auto; padding:1rem; font-family:Poppins, sans-serif; }
-    .card { background:#fff; border-radius:8px; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-    .card h3, .card h4 { margin-top:0; color:#0f4c81; }
-    .section-desc { color:#333; line-height:1.5; }
-    .footer-note { text-align:center; margin-top:1rem; color:#666; font-size:0.9rem; }
-    .hero-btn { background:#0b6aa3; color:#fff; padding:0.6rem 1rem; border-radius:6px; text-decoration:none; display:inline-block; }
-
-    .cta-card { background:linear-gradient(135deg,#0f4c81,#0b6aa3); color:#fff; border-radius:8px; padding:1.25rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-    .cta-card h3 { color:#fff; margin-top:0; }
-    .cta-card p { color:#eaf4fb; line-height:1.5; }
-    .cta-buttons { display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.75rem; }
-    .cta-btn { background:#fff; color:#0b6aa3; padding:0.55rem 0.9rem; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.92rem; }
-    .cta-btn.secondary { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.7); }
-
-    .report-hero { background:linear-gradient(135deg,#0f4c81,#0b6aa3); color:#fff; border-radius:10px; padding:1.75rem; text-align:center; }
-    .report-hero h2 { margin:0; font-family:Poppins, sans-serif; }
-    .report-hero p { color:#eaf4fb; margin-top:0.4rem; }
-    .stars { font-size:1.6rem; color:#ffd54a; margin-top:0.6rem; letter-spacing:2px; }
-    .stars .empty { color:rgba(255,255,255,0.35); }
-    .match-caveat { font-size:0.78rem; color:#eaf4fb; opacity:0.85; margin-top:0.3rem; }
-
-    .report-grid { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:1rem; }
-    @media(min-width:900px){ .report-grid { grid-template-columns:1fr 1fr; } }
-    .tag-list { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
-    .tag { background:#eaf4fb; color:#0b6aa3; padding:0.3rem 0.7rem; border-radius:14px; font-size:0.82rem; }
-    .tag.career { background:#0b6aa3; color:#fff; }
-
-    .bar-row { display:grid; grid-template-columns:110px 1fr 45px; align-items:center; gap:0.5rem; margin-bottom:0.5rem; font-size:0.88rem; }
-    .bar-track { background:#eef3f6; border-radius:6px; height:12px; overflow:hidden; }
-    .bar-fill { background:linear-gradient(90deg,#0b6aa3,#0f4c81); height:100%; border-radius:6px; }
-
-    .empty-state { text-align:center; padding:2rem 1rem; }
-    .empty-state .icon { font-size:2.4rem; }
-    .missing-card { border:1.5px dashed #cfe0ea; border-radius:8px; padding:1rem; text-align:center; margin-top:0.75rem; }
-  </style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-links" id="navLinks">
-    <i class="fa fa-times" onclick="hidemenu()"></i>
-    <ul>
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="About.html">ABOUT</a></li>
-      <li><a href="Subjects.html">SUBJECTS</a></li>
-      <li><a href="quizzes.html">QUIZZES</a></li>
-      <li><a href="aptitude.html">REASONING SKILLS</a></li>
-      <li><a href="forum.html">DISCUSSION</a></li>
-      <li><a href="mental_wellness.html">WELLNESS</a></li>
-      <li><a href="blog.html">BLOG</a></li>
-      <li><a href="contact.html">CONTACT</a></li>
-      <li><a href="library.html">LIBRARY</a></li>
-      <li><a href="khulisa.html">SUPPORT</a></li>
-    </ul>
-  </div>
-  <i class="fa fa-bars" onclick="showmenu()"></i>
-</nav>
-
-<section class="header big-header">
-  <div class="text-box">
-    <h1>My Combined Report</h1>
-    <p class="subtitle">Reasoning skills + career discovery, brought together</p>
-  </div>
-</section>
-
-<section class="aptitude-intro" id="content">
-  <div class="card"><p class="section-desc">Loading your report…</p></div>
-</section>
-
-<footer class="Footer">
-  <h4>About Us</h4>
-  <p>
-    By leveraging technology, we aim to empower students with the tools and support they need to succeed academically
-    regardless of their location, resources, or socioeconomic status.
-  </p>
-  <div class="icons">
-    <i class="fa fa-facebook"></i>
-    <i class="fa fa-twitter"></i>
-    <i class="fa fa-instagram"></i>
-    <i class="fa fa-linkedin"></i>
-  </div>
-  <p>Made with <i class="fa fa-heart-o"></i> by Media On Africa</p>
-  <p class="footer-note">This report is a self-discovery guide to support conversations with teachers and mentors, not a professional psychometric or career-counselling assessment.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/dexie@3.2.2/dist/dexie.js"></script>
-<script>
-  var navLinks = document.getElementById("navLinks");
-  function showmenu() { navLinks.style.right = "0"; }
-  function hidemenu() { navLinks.style.right = "-200px"; }
-
-  const REASONING_KEYS = {
-    'quiz-logical_result': 'Logical',
-    'quiz-numerical_result': 'Numerical',
-    'quiz-verbal_result': 'Verbal',
-    'quiz-abstract_result': 'Abstract'
-  };
-
-  async function loadData() {
-    let db = new Dexie('MediaOnAfricaDB');
-    db.version(1).stores({ quizProgress: '++id, quizId, answers, timestamp, synced' });
-    await db.open();
-
-    const reasoning = {};
-    let reasoningDone = 0;
-    for (const key of Object.keys(REASONING_KEYS)) {
-      const row = await db.quizProgress.where('quizId').equals(key).first();
-      if (row && row.answers && typeof row.answers.total === 'number' && row.answers.total > 0) {
-        reasoning[REASONING_KEYS[key]] = Math.round((row.answers.score / row.answers.total) * 100);
-        reasoningDone++;
-      }
-    }
-
-    const careerRow = await db.quizProgress.where('quizId').equals('career-profile-result').first();
-    const career = careerRow ? careerRow.answers : null;
-
-    return { reasoning, reasoningComplete: reasoningDone === Object.keys(REASONING_KEYS).length, career };
-  }
-
-  function starsHtml(n) {
-    let s = '';
-    for (let i = 1; i <= 5; i++) s += i <= n ? '★' : '<span class="empty">★</span>';
-    return s;
-  }
-
-  function render({ reasoning, reasoningComplete, career }) {
-    const content = document.getElementById('content');
-    const hasReasoning = reasoningComplete;
-    const hasCareer = !!career;
-
-    if (!hasReasoning && !hasCareer) {
-      content.innerHTML = `
-        <div class="card empty-state">
-          <div class="icon">🧭</div>
-          <h3>No results yet</h3>
-          <p class="section-desc">Complete both assessments to see your combined report here.</p>
-          <div class="cta-buttons" style="justify-content:center;">
-            <a href="aptitude.html" class="hero-btn">Take Reasoning Skills Assessment</a>
-            <a href="career-discovery.html" class="hero-btn">Take Career Discovery Assessment</a>
-          </div>
-        </div>`;
-      return;
-    }
-
-    let reasoningAvg = null;
-    let barsHtml = '';
-    if (hasReasoning) {
-      const vals = Object.values(reasoning);
-      reasoningAvg = Math.round(vals.reduce((a,b) => a+b, 0) / vals.length);
-      barsHtml = Object.entries(reasoning).map(([label, pct]) => `
-        <div class="bar-row">
-          <span>${label}</span>
-          <div class="bar-track"><div class="bar-fill" style="width:${pct}%;"></div></div>
-          <span>${pct}%</span>
-        </div>`).join('') + `
-        <div class="bar-row" style="font-weight:700; margin-top:0.4rem;">
-          <span>Overall</span>
-          <div class="bar-track"><div class="bar-fill" style="width:${reasoningAvg}%;"></div></div>
-          <span>${reasoningAvg}%</span>
-        </div>`;
-    }
-
-    let stars = null;
-    if (hasReasoning && hasCareer) {
-      stars = Math.max(1, Math.min(5, Math.round((reasoningAvg / 100) * 5)));
-    }
-
-    const heroTitle = hasCareer ? `You're ${/^[aeiou]/i.test(career.personalityTitle) ? 'an' : 'a'} ${career.personalityTitle}` : 'Your Combined Report';
-
-    let html = `
-      <div class="report-hero">
-        <h2>${heroTitle}</h2>
-        ${hasCareer ? `<p>${career.personalityBlurb}</p>` : `<p>Complete the Career Discovery Assessment to see your personality profile here.</p>`}
-        ${stars !== null ? `<div class="stars">${starsHtml(stars)}</div><div class="match-caveat">Overall Career Match — based on assessment completion and reasoning strength. Use this as a starting point, not a final answer.</div>` : ''}
+    <nav class="navbar" id="mainNav">
+      <a href="index.html" class="nav-logo">
+        <i class="fa fa-graduation-cap logo-icon"></i> E-Learning Hub
+      </a>
+      <div class="nav-links" id="navLinks">
+        <button type="button" class="close-btn" onclick="hidemenu()" aria-label="Close menu">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="Subjects.html">SUBJECTS</a></li>
+          <li><a href="quizzes.html">QUIZZES</a></li>
+          <li><a href="aptitude.html">REASONING SKILLS</a></li>
+          <li><a href="forum.html">DISCUSSION</a></li>
+          <li><a href="mental_wellness.html">WELLNESS</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="contact.html">CONTACT &amp; SUPPORT</a></li>
+        </ul>
       </div>
-      <div class="report-grid">`;
+      <button
+        type="button"
+        class="open-btn"
+        id="menuToggle"
+        onclick="showmenu()"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+    </nav>
 
-    // Reasoning card
-    html += `<div class="card"><h4>Reasoning Skills</h4>`;
-    if (hasReasoning) { html += barsHtml; }
-    else {
-      html += `<div class="missing-card"><p class="section-desc">Not completed yet.</p><a href="aptitude.html" class="hero-btn">Take Reasoning Skills Assessment</a></div>`;
-    }
-    html += `</div>`;
+    <section class="report-page-header" aria-label="My Combined Report">
+      <div class="report-page-header__inner">
+        <span class="badge"><i class="fa fa-line-chart"></i> Your Full Profile</span>
+        <h1>My Combined Report</h1>
+        <p>Reasoning skills + career discovery, brought together in one place.</p>
+      </div>
+    </section>
 
-    // Learning style card
-    html += `<div class="card"><h4>Learning Style</h4>`;
-    if (hasCareer) { html += `<p class="section-desc">${career.learningStyleText}</p>`; }
-    else { html += `<div class="missing-card"><p class="section-desc">Not completed yet.</p><a href="career-discovery.html" class="hero-btn">Take Career Discovery Assessment</a></div>`; }
-    html += `</div>`;
+    <main id="reportPageApp" aria-live="polite">
+      <div id="content">
+        <div class="card"><p class="section-desc">Loading your report…</p></div>
+      </div>
+    </main>
 
-    // Subjects card
-    html += `<div class="card"><h4>Subjects to Focus On</h4>`;
-    if (hasCareer) { html += `<div class="tag-list">${career.subjects.map(s => `<span class="tag">${s}</span>`).join('')}</div>`; }
-    else { html += `<p class="section-desc">Complete the Career Discovery Assessment to see subject suggestions.</p>`; }
-    html += `</div>`;
-
-    // Growth areas card
-    html += `<div class="card"><h4>Growth Areas</h4><div class="tag-list">`;
-    if (hasCareer) html += `<span class="tag">${career.growthText}</span>`;
-    if (hasReasoning) {
-      const weakest = Object.entries(reasoning).sort((a,b) => a[1]-b[1])[0];
-      if (weakest && weakest[1] < 70) html += `<span class="tag">${weakest[0]} reasoning practice</span>`;
-    }
-    if (!hasCareer && !hasReasoning) html += `<span class="section-desc">Complete both assessments to see growth areas.</span>`;
-    html += `</div></div>`;
-
-    html += `</div>`; // end report-grid
-
-    // Careers card (full width)
-    html += `<div class="card" style="margin-top:1rem;"><h4>Recommended Careers</h4>`;
-    if (hasCareer) {
-      html += `<div class="tag-list">${career.careers.map(c => `<span class="tag career">${c}</span>`).join('')}</div>`;
-      if (hasReasoning && reasoningAvg >= 70) {
-        html += `<p class="section-desc" style="margin-top:0.6rem;">Your reasoning scores are strong across the board, which supports these career directions particularly well.</p>`;
-      }
-    } else {
-      html += `<div class="missing-card"><p class="section-desc">Complete the Career Discovery Assessment to see career suggestions.</p><a href="career-discovery.html" class="hero-btn">Take Career Discovery Assessment</a></div>`;
-    }
-    html += `</div>`;
-
-    if (!hasReasoning || !hasCareer) {
-      html += `
-        <div class="cta-card" style="margin-top:1rem;">
-          <h3>Complete your full profile</h3>
-          <p>You've finished ${hasCareer ? 'the Career Discovery Assessment' : 'the Reasoning Skills Assessment'}. Finish the other one for your complete combined report.</p>
-          <div class="cta-buttons">
-            ${!hasReasoning ? `<a href="aptitude.html" class="cta-btn">Take Reasoning Skills Assessment →</a>` : ''}
-            ${!hasCareer ? `<a href="career-discovery.html" class="cta-btn">Take Career Discovery Assessment →</a>` : ''}
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3><i class="fa fa-graduation-cap"></i> E-Learning Hub</h3>
+          <p>
+            Empowering high school learners across South Africa with zero-data,
+            accessible, and high-quality e-learning tools.
+          </p>
+        </div>
+        <div class="footer-socials">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
           </div>
-        </div>`;
-    }
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Made with <i class="fa fa-heart text-danger"></i> for South African learners by DataPulse</p>
+        <p class="footer-note">
+          This report is a self-discovery guide to support conversations with teachers and mentors,
+          not a professional psychometric or career-counselling assessment.
+        </p>
+      </div>
+    </footer>
 
-    content.innerHTML = html;
-  }
+    <script>
+      var navLinks = document.getElementById("navLinks");
+      var mainNav = document.getElementById("mainNav");
+      var menuToggle = document.getElementById("menuToggle");
 
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      const data = await loadData();
-      render(data);
-    } catch (e) {
-      console.error(e);
-      document.getElementById('content').innerHTML = `<div class="card"><p class="section-desc">Couldn't load your report. Make sure you've completed at least one assessment on this device/browser.</p></div>`;
-    }
-  });
-</script>
+      function showmenu() {
+        navLinks.style.right = "0";
+        if (mainNav) mainNav.classList.add("menu-open");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+      }
+      function hidemenu() {
+        navLinks.style.right = "-260px";
+        if (mainNav) mainNav.classList.remove("menu-open");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+      }
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 768) hidemenu();
+      });
+    </script>
 
-</body>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("service-worker.js").catch(() => {});
+        });
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dexie@3.2.2/dist/dexie.js"></script>
+    <script src="js/combined-report/combined-report-data.js"></script>
+    <script src="js/combined-report/combined-report-render.js"></script>
+    <script src="anim-bounce.js" defer></script>
+  </body>
 </html>
