@@ -1,4 +1,4 @@
-# Onboarding Guide — DataPulse Learning Hub
+# Onboarding Guide - E-Learning Hub
 
 Welcome. This doc explains how the project works, things to be careful with, and what still needs to be done. Read this before you start changing code.
 
