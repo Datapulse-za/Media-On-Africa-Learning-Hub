@@ -76,10 +76,31 @@
     <h2>CAPS Quiz Generator</h2>
 
     <div class="field">
+      <label for="adminEmail">Admin Email</label>
+      <input
+        type="email"
+        id="adminEmail"
+        autocomplete="username"
+        placeholder="Admin email"
+      />
+    </div>
+
+    <div class="field">
+      <label for="adminPassword">Admin Password</label>
+      <input
+        type="password"
+        id="adminPassword"
+        autocomplete="current-password"
+        placeholder="Admin password"
+      />
+    </div>
+
+    <div class="field">
       <label for="apiKey">Gemini API Key</label>
       <input
         type="password"
         id="apiKey"
+        autocomplete="off"
         placeholder="Paste your Gemini API key here..."
       />
     </div>
@@ -119,6 +140,7 @@
 
     <script type="module">
       import { db } from "./js/config/firebase.js";
+      import { ensureAdmin } from "./js/quizzes/admin-auth.js";
       import { capsTopics, subjectMeta } from "./js/quizzes/caps-topic.js";
       import {
         collection,
@@ -199,10 +221,16 @@
 
           status.style.display = "block";
           status.className = "";
-          status.textContent = "Requesting questions from Gemini AI...";
+          status.textContent = "Signing in...";
           btn.disabled = true;
 
           try {
+            // Sign in first so a wrong password stops here, before any
+            // Gemini request is made.
+            await ensureAdmin();
+
+            status.textContent = "Requesting questions from Gemini AI...";
+
             const prompt = `
 You are a South African CAPS curriculum content writer. Generate ${count} multiple-choice quiz questions for subject "${subject}", grade "${grade}", term "${term}".
 

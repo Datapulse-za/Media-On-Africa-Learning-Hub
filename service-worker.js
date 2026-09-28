@@ -6,7 +6,7 @@
  * This is what forces browsers to drop the old cache and fetch fresh files.
  */
 
-const CACHE_VERSION = "media-on-africa-v17";
+const CACHE_VERSION = "media-on-africa-v18";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PDF_CACHE = `${CACHE_VERSION}-pdfs`;
 
@@ -21,8 +21,6 @@ const STATIC_ASSETS = [
   "library.html",
   "forum.html",
   "quizzes.html",
-  "admin-generator.html",
-  "admin-delete.html",
   "aptitude.html",
   "career-discovery.html",
   "combined-report.html",

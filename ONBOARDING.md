@@ -18,6 +18,8 @@ The app uses Firebase's Firestore database to store things that need to be share
 
 The Firebase config values (`apiKey`, `projectId`, etc.) are normal to have visible in a web app like this — this is how Google's Firebase client SDK works, and real protection comes from Firestore's security rules, not from hiding this file. Ask the admin for the real config values before you start.
 
+Security rules live in `firestore.rules` in the repo. Learners can read approved quiz questions and subjects, and can send a contact message. Only the admin can write or delete anything else. Every collection you don't write a rule for is blocked, so add a rule whenever you add a collection. See "Firestore security" in the README for how to publish the rules and add an admin.
+
 The project also uses **offline persistence** — Firestore keeps a local copy of data on the learner's device so pages still work without internet, then syncs when they're back online.
 
 ## 3. The Service Worker — read this before touching `service-worker.js`
@@ -29,12 +31,14 @@ The service worker is what makes the app work offline. A few important rules:
 - PDFs are cached separately from everything else, and only PDFs that are listed in `PDF_ASSETS` inside `service-worker.js` get cached automatically. If you add a new PDF, add its path there too.
 - There was a past bug where redirected page responses couldn't be reused offline (Chrome would throw an error). This is already fixed in the current file — don't remove the redirect-handling code in the fetch handler unless you're sure you understand why it's there.
 
-## 4. Admin Quiz Generator (`admin-generator.html`)
+## 4. Admin Quiz Generator (`admin-generator.html`) and Deleter (`admin-delete.html`)
 
-This is an internal tool (not for learners) that generates multiple-choice quiz questions using Google's Gemini AI and saves them straight to Firestore.
+These are internal tools (not for learners). The generator makes multiple-choice quiz questions using Google's Gemini AI and saves them straight to Firestore. The deleter previews and removes questions by subject, grade and term.
 
 Important things to know:
 
+- **Both tools need an admin login.** Enter the admin email and password at the top of the page. The login code is shared in `js/quizzes/admin-auth.js`. Firestore rules block all writes from anyone who is not the admin, so the tools will fail with `permission-denied` if you sign in with a non-admin account.
+- **Do not add the admin pages or `admin-auth.js` to `STATIC_ASSETS`** in `service-worker.js`. Learners should not cache them.
 - **The Gemini API key is typed in by hand** on the page itself (there's a password-style input field) — it is not automatically loaded from a `.env` file when the page runs, because this is a plain static site with no build step, so `.env` files aren't reachable from browser JavaScript. Whoever uses this tool needs their own key.
 - Generated questions are **saved as `approved: true` and go live immediately** — there is currently no review/approval step before learners can see them. Worth discussing whether that should change.
 - If the main Gemini model fails or is rate-limited, the tool automatically retries with a fallback model.
@@ -51,8 +55,8 @@ Important things to know:
 - [ ] **Subjects page** — finish the restructure to grade → subject → resource-category (Textbooks, Study Guides, Videos, Practice).
 - [ ] **Remove copyrighted files from `resources/`** and update `PDF_ASSETS` in `service-worker.js` to match.
 - [ ] **Commission original CAPS-aligned content** to replace what's removed — sourcing writers is in progress.
-- [ ] **Career Discovery page** — still needs work.
-- [ ] **Combined-report page** — needs UI work.
+- [x] **Career Discovery page** — still needs work.
+- [x] **Combined-report page** — needs UI work.
 - [ ] **Wellness page** — still needs work.
 - [ ] **Blog page** — still needs work.
 - [ ] **Quizzes page** — still needs work (see also the performance item below).
@@ -62,7 +66,7 @@ Important things to know:
 
 ### Discussion Forum
 - [ ] Build out a proper backend for the forum (beyond what exists now).
-- [ ] Review and implement the learner-data security/safety measures already outlined in the feasibility study (POPIA compliance for minors' data, Firestore security rules, what CyberSafe does vs. what still needs manual moderation).
+- [ ] Review and implement the learner-data security/safety measures already outlined in the feasibility study (POPIA compliance for minors' data, what CyberSafe does vs. what still needs manual moderation). Firestore security rules are now in place for quizzes, subjects and contacts. The forum has no collection yet, so it is blocked by default. Write its rules when you build its backend.
 
 ### Contact page & learner support
 - [ ] Decide who actually handles learner queries that come through the contact form once the confirmation email goes out. Technical issues can route to developers for maintenance, but there's currently no one confirmed to help learners with non-technical questions.
@@ -79,5 +83,7 @@ Important things to know:
 ### Admin tooling
 - [ ] Decide how the admin generator handles its Gemini key going forward (per-admin pasted key vs. a more secure shared setup).
 - [ ] Decide whether generated quiz questions need an approval step before going live to learners.
+- [ ] Decide how more than one admin is handled. Right now `isAdmin()` in `firestore.rules` allows one UID only.
+- [ ] Add Firebase App Check to reduce spam and bots on the contact form, since anyone can create a `contacts` document.
 
 If you pick up one of these, please update this list so the rest of the team knows what's already being worked on.

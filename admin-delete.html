@@ -131,6 +131,28 @@
     <h2>CAPS Quiz Deleter</h2>
 
     <div class="field">
+      <label for="adminEmail">Admin Email</label>
+      <input
+        type="email"
+        id="adminEmail"
+        autocomplete="username"
+        placeholder="Admin email"
+      />
+    </div>
+
+    <div class="field">
+      <label for="adminPassword">Admin Password</label>
+      <input
+        type="password"
+        id="adminPassword"
+        autocomplete="current-password"
+        placeholder="Admin password"
+      />
+    </div>
+
+    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #eee" />
+
+    <div class="field">
       <label for="subject">Subject</label>
       <select id="subject"></select>
     </div>
@@ -166,6 +188,7 @@
 
     <script type="module">
       import { db } from "./js/config/firebase.js";
+      import { ensureAdmin } from "./js/quizzes/admin-auth.js";
       import { subjectMeta } from "./js/quizzes/caps-topic.js";
       import {
         collection,
@@ -224,6 +247,8 @@
       subjectSelect.addEventListener("change", populateGrades);
       populateGrades(); // initial population on page load
 
+      let matchedDocs = [];
+
       // Any filter change invalidates the current preview — force a fresh
       // preview before deleting so the admin never deletes a stale set.
       function resetPreview() {
@@ -235,8 +260,6 @@
       [subjectSelect, gradeSelect, termSelect].forEach((el) =>
         el.addEventListener("change", resetPreview),
       );
-
-      let matchedDocs = [];
 
       function showStatus(className, text) {
         status.style.display = "block";
@@ -254,6 +277,8 @@
         previewBtn.textContent = "Loading...";
 
         try {
+          await ensureAdmin();
+
           const q = query(
             collection(db, "quizQuestions"),
             where("subject", "==", subject),
@@ -277,11 +302,15 @@
               const data = docSnap.data();
               const item = document.createElement("div");
               item.className = "preview-item";
-              item.innerHTML = `${data.q || "(no question text)"}${
-                data.capsTopic
-                  ? `<span class="topic">${data.capsTopic}</span>`
-                  : ""
-              }`;
+              // textContent (not innerHTML) so question text can never
+              // inject markup into this page
+              item.textContent = data.q || "(no question text)";
+              if (data.capsTopic) {
+                const topic = document.createElement("span");
+                topic.className = "topic";
+                topic.textContent = data.capsTopic;
+                item.appendChild(topic);
+              }
               previewList.appendChild(item);
             });
             deleteBtn.disabled = false;
@@ -307,6 +336,8 @@
         status.style.display = "none";
 
         try {
+          await ensureAdmin();
+
           // Firestore batches are capped at 500 writes, so chunk in case a
           // filter ever matches more than that.
           const chunkSize = 500;
@@ -326,6 +357,7 @@
           resetPreview();
         } catch (err) {
           showStatus("error", "Failed: " + err.message);
+          deleteBtn.disabled = false;
         } finally {
           deleteBtn.textContent = "Delete All Shown";
         }
